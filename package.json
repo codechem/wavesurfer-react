@@ -1,23 +1,27 @@
 {
-  "name": "wavesurfer-react",
-  "version": "2.2.2",
+  "name": "@codechem/wavesurfer-react",
+  "version": "2.3.0",
   "description": "react wrapper for wavesurfer.js",
   "keywords": [
     "react",
     "wavesurfer.js"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Denis Bogdanenko <shiirochi@yandex.ru>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "rimraf dist/*",
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "build": "tsup src/index.ts --config tsup.config.ts",
+    "dev": "tsup src/index.ts --config tsup.config.ts --watch"
   },
   "peerDependencies": {
-    "wavesurfer.js": "^4.0.0 || ^5.0.0 || ^6.0.0"
+    "wavesurfer.js": "^4.0.0 || ^5.0.0 || ^6.0.0",
+    "react": ">=17.0.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
@@ -30,7 +34,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "prettier": "^2.5.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "tsup": "^6.3.0"
   },
   "browserslist": [
     ">0.2%",
